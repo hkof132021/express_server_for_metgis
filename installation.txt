@@ -1,0 +1,38 @@
+sudo yum install nodejs
+
+update package.json file
+
+
+npm install
+
+vi express_server.js
+
+sudo yum install nodejs
+sudo firewall-cmd --zone=public --add-port=8085/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=8085/tcp
+
+setup node for user, not system
+
+// cd ~/nodejs      , download the tar and untar it
+wget https://nodejs.org/download/release/v8.4.0/node-v8.4.0-linux-x64.tar.gz
+wget https://nodejs.org/download/release/v10.15.3/node-v10.15.3-linux-x64.tar.gz
+
+
+tar -zxvf node-v8.4.0-linux-x64.tar.gz
+tar -zxvf node-v10.15.3-linux-x64.tar.gz
+
+
+// can make it effective at once but not working after login again
+
+
+
+export NODEJS_HOME=/home/cfodev/nodejs/node-v10.15.3-linux-x64/
+export PATH=$PATH:$NODEJS_HOME/bin
+
+
+// need reloging to make it effective
+echo  'export NODEJS_HOME=/home/cfodev/nodejs/node-v10.15.3-linux-x64' >> ~/.bashrc
+echo  'export PATH=$PATH:$NODEJS_HOME/bin' >> ~/.bashrc
+
+// can use this to activate
+source ~/.bash_profile
