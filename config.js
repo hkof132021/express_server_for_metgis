@@ -1,7 +1,7 @@
 // config.js
 var dict = [];
-env_setting = 'dev'
-//environment = 'pro'
+//env_setting = 'dev'
+env_setting = 'pro'
 
 if(env_setting == 'dev'){
     dict.push({
