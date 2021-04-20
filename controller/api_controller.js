@@ -1,6 +1,6 @@
 var fs = require('fs');
-var config = require('./config');
-var upload_path = config.app.upload_path
+var config = require('../config');
+var upload_path = config.app.upload_path;
 
 
 module.exports.post_image = function (req, res) { 
