@@ -8,6 +8,8 @@ var fs = require('fs');
 var app = express();
 var dotenv = require('dotenv')
 
+// import other modules
+var upload_controller = require('./controller/upload_controller.js');
 
 // ---------------------------   Get env variable  -----------------
 const envConfig = dotenv.parse(fs.readFileSync('.env'))
@@ -18,6 +20,7 @@ var host = envConfig['host']
 const logger = function (req, res, next) {
     var url = req.protocol + '://' + req.get('host') + req.originalUrl;
     console.log('---- Calling ' +　url);
+    upload_controller.logggg("logggg");
     next();
   }
 // ---------------------------   APP init  -----------------

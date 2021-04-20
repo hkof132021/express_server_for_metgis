@@ -1,0 +1,11 @@
+cd ~ 
+mkdir git
+
+
+wget -O git.tar.gz https://github.com/git/git/archive/v2.17.0.tar.gz
+
+
+tar -zxvf node-v10.15.3-linux-x64.tar.gz
+
+cd /home/billchan/git/git-2.17.0
+make configure
