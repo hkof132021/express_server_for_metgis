@@ -1,4 +1,7 @@
 var fs = require('fs');
+var config = require('../config');
+var upload_path = config.app.upload_path
+console.log(upload_path)
 
 module.exports.post_image = function (req, res) { 
 
@@ -19,7 +22,7 @@ module.exports.post_image = function (req, res) {
         console.log("time_str : " + time_str)
         console.log("file_name : " + file_name)
         
-        const base_path = '/home/billchan/node_server/images/' + time_str + '/' + img_type + '/'
+        const base_path = upload_path + time_str + '/' + img_type + '/'
         console.log("base_path " + base_path)
 
         if (!fs.existsSync(base_path)){
