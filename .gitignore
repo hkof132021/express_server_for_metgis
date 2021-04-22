@@ -1,3 +1,4 @@
 node_modules/**
 images/**
 access.log
+run.sh
