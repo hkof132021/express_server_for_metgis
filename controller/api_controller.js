@@ -66,3 +66,48 @@ module.exports.post_image = function (req, res) {
     }
 
 };
+
+
+
+module.exports.check_image_exist = function (req, res) { 
+
+    try {
+
+        var img_name = req.body.file_name;
+        var img_type = req.body.file_type;
+        var time_str  = img_name.split('.')[0];
+        if(time_str == ""){
+            time_str = img_name
+        }
+        var file_name = img_type+ '_' + img_name;
+
+        console.log("####################################")
+        console.log("img_name : " + img_name)
+        console.log( "img_type : " + img_type)
+        console.log("time_str : " + time_str)
+        console.log("file_name : " + file_name)
+        
+        const base_path = upload_path + '/' + time_str + '/' + img_type + '/'
+        console.log("base_path " + base_path)
+
+        target_file = base_path + file_name + '.png';
+        // if exist then rename
+        if (fs.existsSync(target_file)) {
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify({
+                "isExist": "true"
+            }));
+        }
+        else{
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify({
+                "isExist": "false"
+            }));
+        }
+        
+        return res
+    } catch (e) {
+        console.log(e);
+    }
+
+};
