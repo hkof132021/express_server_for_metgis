@@ -24,6 +24,7 @@ else if(env_setting == 'pro'){
         path: "/home/cfodev/workspace/express_server/addon_data"
     });
     upload_dir = '/home/cfodev/workspace/express_server/images';
+
 }
 
 const config = {
