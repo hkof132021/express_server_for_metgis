@@ -68,7 +68,7 @@ app.use(logger);
 
 api_router.post('/upload', api_controller.post_image);
 api_router.post('/check_upload', api_controller.check_image_exist);
-test_router.get('/hello', test_controller.hello)
+
 
 
 function serve_dirs(content) { 
