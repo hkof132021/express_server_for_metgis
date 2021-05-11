@@ -1,31 +1,29 @@
+# install nodejs 
 sudo yum install nodejs
 
-update package.json file
-
-
+# install node package
 npm install
 
-vi express_server.js
-
-sudo yum install nodejs
+# enable port 
 sudo firewall-cmd --zone=public --add-port=8085/tcp
 sudo firewall-cmd --zone=public --permanent --add-port=8085/tcp
 
-setup node for user, not system
+# update run.sh
 
-// cd ~/nodejs      , download the tar and untar it
-wget https://nodejs.org/download/release/v8.4.0/node-v8.4.0-linux-x64.tar.gz
+# ./run.sh
+
+# optional  start express server when vm onboot using crontab
+crontab -e 
+@reboot /home/billchan/node_server/run.sh
+
+
+
+#optional setup node for user, not system
+cd ~/nodejs  , download the tar and untar it
 wget https://nodejs.org/download/release/v10.15.3/node-v10.15.3-linux-x64.tar.gz
-
-
-tar -zxvf node-v8.4.0-linux-x64.tar.gz
 tar -zxvf node-v10.15.3-linux-x64.tar.gz
 
-
-// can make it effective at once but not working after login again
-
-
-
+// Remark can make it effective at once but not working after login again
 export NODEJS_HOME=/home/cfodev/nodejs/node-v10.15.3-linux-x64/
 export PATH=$PATH:$NODEJS_HOME/bin
 
