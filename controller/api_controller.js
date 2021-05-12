@@ -3,6 +3,9 @@ var config = require('../config');
 var upload_path = config.app.upload_path;
 
 
+
+
+
 module.exports.post_image = function (req, res) { 
 
     try {
@@ -10,6 +13,8 @@ module.exports.post_image = function (req, res) {
         var base64Data = req.body.base64image.replace(/^data:image\/png;base64,/, "");
         var img_name = req.body.file_name;
         var img_type = req.body.file_type;
+        var kml_file = req.body.kmlstr;
+        
         var time_str  = img_name.split('.')[0];
         if(time_str == ""){
             time_str = img_name
@@ -23,10 +28,15 @@ module.exports.post_image = function (req, res) {
         console.log("file_name : " + file_name)
         
         const base_path = upload_path + '/' + time_str + '/' + img_type + '/'
+        const kml_base_path = upload_path + '/kml/'
         console.log("base_path " + base_path)
 
         if (!fs.existsSync(base_path)){
             fs.mkdirSync(base_path, { recursive: true });
+        }
+
+        if (!fs.existsSync(kml_base_path)){
+            fs.mkdirSync(kml_base_path, { recursive: true });
         }
 
         // for testing purpose, txt has the base64 string
@@ -51,6 +61,12 @@ module.exports.post_image = function (req, res) {
         fs.writeFile(target_file, base64Data, 'base64', function(err) {
             console.log(err);
         });
+
+        fs.writeFile(kml_base_path + file_name + ".kml", kml_file,  function(err) {
+            console.log(err);
+        });
+
+
         console.log("Upload Done")
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify({
