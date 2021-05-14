@@ -54,7 +54,7 @@ module.exports.post_image = function (req, res) {
             fs.rename(target_file, new_name, function(err) {
                 if ( err ) console.log('ERROR: ' + err);
             });
-            console.log(　"### " + target_file +　" exist, already rename to " + new_name)
+            console.log(　"### " + target_file +　" already exist,  rename to " + new_name)
         }
         
         // write file
@@ -62,6 +62,7 @@ module.exports.post_image = function (req, res) {
             console.log(err);
         });
 
+        console.log(kml_file)
         fs.writeFile(kml_base_path + file_name + ".kml", kml_file,  function(err) {
             console.log(err);
         });
