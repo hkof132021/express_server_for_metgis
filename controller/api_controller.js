@@ -1,7 +1,7 @@
 var fs = require('fs');
 var config = require('../config');
 var upload_path = config.app.upload_path;
-
+var parser = require('xml2json');
 
 
 
@@ -13,7 +13,7 @@ module.exports.post_image = function (req, res) {
         var base64Data = req.body.base64image.replace(/^data:image\/png;base64,/, "");
         var img_name = req.body.file_name;
         var img_type = req.body.file_type;
-        var kml_file = req.body.kmlstr;
+        var      = req.body.kmlstr;
         
         var time_str  = img_name.split('.')[0];
         if(time_str == ""){
@@ -62,6 +62,9 @@ module.exports.post_image = function (req, res) {
             console.log(err);
         });
 
+
+
+        var kml_file = parser.toXml(kml_file);
         console.log(kml_file)
         fs.writeFile(kml_base_path + file_name + ".kml", kml_file,  function(err) {
             console.log(err);
