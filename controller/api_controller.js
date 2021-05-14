@@ -13,8 +13,8 @@ module.exports.post_image = function (req, res) {
         var base64Data = req.body.base64image.replace(/^data:image\/png;base64,/, "");
         var img_name = req.body.file_name;
         var img_type = req.body.file_type;
-        var kml_file = req.body.kmlstr;
-        
+        var kml_file = String(req.body.kmlstr);
+        //console.log(kml_file)
         var time_str  = img_name.split('.')[0];
         if(time_str == ""){
             time_str = img_name
@@ -40,7 +40,7 @@ module.exports.post_image = function (req, res) {
         }
 
         // for testing purpose, txt has the base64 string
-        fs.writeFile( base_path + '.txt', JSON.stringify(req.body.base64image), function(err) {
+        fs.writeFile( base_path + 'backup.txt', JSON.stringify(req.body.base64image), function(err) {
             if(err){
                 console.log(err);
             }
@@ -62,10 +62,6 @@ module.exports.post_image = function (req, res) {
             console.log(err);
         });
 
-
-
-
-        console.log(kml_file)
         fs.writeFile(kml_base_path + file_name + ".kml", kml_file,  function(err) {
             console.log(err);
         });
