@@ -1,7 +1,7 @@
 var fs = require('fs');
 var config = require('../config');
 var upload_path = config.app.upload_path;
-var parser = require('xml2json');
+
 
 
 
@@ -64,7 +64,7 @@ module.exports.post_image = function (req, res) {
 
 
 
-        var kml_file = parser.toXml(kml_file);
+
         console.log(kml_file)
         fs.writeFile(kml_base_path + file_name + ".kml", kml_file,  function(err) {
             console.log(err);
