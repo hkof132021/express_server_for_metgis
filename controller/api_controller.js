@@ -13,7 +13,7 @@ module.exports.post_image = function (req, res) {
         var base64Data = req.body.base64image.replace(/^data:image\/png;base64,/, "");
         var img_name = req.body.file_name;
         var img_type = req.body.file_type;
-        var      = req.body.kmlstr;
+        var kml_file = req.body.kmlstr;
         
         var time_str  = img_name.split('.')[0];
         if(time_str == ""){
