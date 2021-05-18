@@ -8,20 +8,12 @@ if(env_setting == 'dev'){
         index:   "/images",
         path: "/home/billchan/node_server/images"
     });
-    dict.push({
-        index:   "/images_temp",
-        path: "/home/billchan/node_server/addon_data"
-    });
     upload_dir = '/home/billchan/node_server/images';
 }
 else if(env_setting == 'pro'){
     dict.push({
         index:   "/images",
         path: "/home/cfodev/workspace/express_server/images"
-    });
-    dict.push({
-        index:   "/images_temp",
-        path: "/home/cfodev/workspace/express_server/addon_data"
     });
     upload_dir = '/home/cfodev/workspace/express_server/images';
 

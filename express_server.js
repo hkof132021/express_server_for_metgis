@@ -35,7 +35,9 @@ var host = config.app.host
 // create a write stream (in append mode)
 var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'})
 // setup the logger
-app.use(morgan('combined', {stream: accessLogStream}))
+// http://expressjs.com/en/resources/middleware/morgan.html
+// option : combined, common, short
+app.use(morgan('short', {stream: accessLogStream}))
 
 
 // print request ---- Calling http://protus:8085/images/
