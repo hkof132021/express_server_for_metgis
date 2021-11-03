@@ -1,2 +1,3 @@
-cd /home/billchan/node_server
+cd /home/cfodev/workspace/express_server
 node express_server.js
+
